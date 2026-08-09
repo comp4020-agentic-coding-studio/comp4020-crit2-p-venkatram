@@ -43,7 +43,7 @@ h3 {
 }
 
 h1 {
-  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
 }
 
 h2 {
@@ -100,16 +100,18 @@ img {
 .brand {
   font-family: var(--serif);
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 2.25rem;
   color: var(--sage-dark);
   text-decoration: none;
   white-space: nowrap;
+  -webkit-text-stroke: 0.5px var(--sage-dark);
 }
 
 .brand span {
   display: block;
   font-family: var(--sans);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
+  font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--terracotta);
@@ -151,6 +153,7 @@ img {
   font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.01em;
+  text-transform: uppercase;
 }
 
 .primary-nav a[aria-current="page"] {
@@ -171,6 +174,7 @@ main {
   text-align: center;
   overflow: hidden;
   isolation: isolate;
+  background: linear-gradient(180deg, var(--cream-deep) 0%, var(--cream) 65%);
 }
 
 .hero::before,
@@ -183,17 +187,27 @@ main {
 }
 
 .hero::before {
-  width: 22rem;
-  height: 22rem;
-  background: rgb(144 72 152 / 16%);
+  width: 24rem;
+  height: 24rem;
+  background: radial-gradient(
+    circle at 35% 35%,
+    rgb(144 72 152 / 45%),
+    rgb(144 72 152 / 10%) 60%,
+    transparent 75%
+  );
   top: -8rem;
   left: -6rem;
 }
 
 .hero::after {
-  width: 18rem;
-  height: 18rem;
-  background: rgb(88 56 112 / 14%);
+  width: 20rem;
+  height: 20rem;
+  background: radial-gradient(
+    circle at 65% 65%,
+    rgb(88 56 112 / 40%),
+    rgb(88 56 112 / 8%) 60%,
+    transparent 75%
+  );
   bottom: -7rem;
   right: -4rem;
 }
@@ -205,7 +219,7 @@ main {
 
 .eyebrow {
   display: inline-block;
-  font-size: 0.8rem;
+  font-size: 1.25rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--terracotta);
@@ -222,7 +236,7 @@ main {
   display: inline-block;
   padding: 0.85rem 1.9rem;
   border-radius: 3rem;
-  background: var(--sage-dark);
+  background: linear-gradient(135deg, var(--sage) 0%, var(--sage-dark) 100%);
   color: var(--cream);
   text-decoration: none;
   font-weight: 600;
@@ -262,11 +276,26 @@ section {
 }
 
 .card {
+  position: relative;
   background: #fff;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 1.75rem;
   box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 0.25rem;
+  background: linear-gradient(
+    90deg,
+    var(--sage) 0%,
+    var(--terracotta) 50%,
+    var(--sage-dark) 100%
+  );
 }
 
 .card ul {
@@ -291,14 +320,21 @@ blockquote footer {
 }
 
 .divider {
-  height: 1px;
-  background: var(--line);
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--sage) 25%,
+    var(--terracotta) 50%,
+    var(--sage) 75%,
+    transparent
+  );
   margin: 0 auto;
   max-width: 72rem;
 }
 
 .tinted {
-  background: var(--cream-deep);
+  background: linear-gradient(135deg, var(--cream-deep) 0%, var(--cream) 100%);
 }
 
 .tinted section {
