@@ -1,9 +1,5 @@
 # Process overview
 
-<!-- TEMPLATE: this file is a shape to fill in, not a form. Replace everything
-     in it with your own overview, and delete this comment — `pnpm
-     check:evidence` will remind you if it's still here. -->
-
 A reading-guide to how the work came together --- a map to your process, not an
 essay about it. Markers read this file and follow its citations; they don't
 trawl the repo for evidence you didn't point at, so if a moment mattered, cite
@@ -17,60 +13,56 @@ cover every deliverable.
 
 ## What I built
 
-One paragraph: the thing, and the idea behind it.
+A five-page static site for a fictional music school, "Harmony -- The Music
+School", redesigned from a Wix wellness template into a calming,
+purple/lavender-toned brand: a home page, a "Who We Are" story page with team
+and testimonials, a music programmes page, a careers page, and an events page
+-- built with plain HTML/CSS/TypeScript on Vite and iterated on through several
+rounds of visual polish (branding, hero photography, navigation) checked
+against the repo's automated build/lint/spec suite and real browser
+screenshots at both the marked viewports.
 
 ## The moments that mattered
 
-Three or four for an assignment; fewer is fine for a weekly prototype. Keep the
-list short so each moment has room to do all four jobs:
+1. **Header brand mark: image crop hit a CLI bug, so I changed the approach
+   instead of fighting the tool.** The original brand asset was a rectangular
+   logo lockup; I wanted a square badge cropped out of it. Chaining
+   `sharp-cli`'s `extract` and `trim` operations in one invocation
+   (`extract ... -- trim 10`) failed with `bad extract area`, even though the
+   same extract succeeded on its own. Rather than keep forcing the chained
+   form, I ran `extract`, `trim`, and `resize` as three separate sequential
+   invocations. At the same time I replaced the old image-only wordmark with a
+   decorative badge image (`alt=""`) plus real HTML text for the school name
+   and tagline, which is both more robust to the crop and more accessible than
+   baking the name into a raster image. I confirmed the result with Playwright
+   screenshots of the header across viewports before committing
+   ([`3501239`](https://github.com/comp4020-agentic-coding-studio/comp4020-crit2-p-venkatram/commit/3501239)).
 
-1. **what happened** --- the problem, or the thing the agent got wrong
-2. **what you did instead of the obvious thing** --- the call you made, and why
-   it beat the obvious one
-3. **how you knew it was right** --- the check you ran, the viewport you looked
-   at, what you read before accepting the diff
-4. **the citation** --- a commit or commit range, a `CLAUDE.md` change, a check
-   that went from red to green, a prompt paired with the commit it produced
+2. **A layout bug that only showed up at narrow widths, caught by checking the
+   phone viewport rather than assuming desktop was representative.** After the
+   badge/text header change, the logo was visibly squeezed at tighter container
+   widths -- a global `img { max-width: 100%; }` rule was fighting a flex child
+   that had no `flex-shrink: 0`. Instead of just shrinking the logo or
+   redesigning the header, I traced it to that specific interaction and fixed
+   it at the source: `flex-shrink: 0` on the `.brand` container and
+   `max-width: none` on `.brand-logo` to opt that one image out of the global
+   rule. I verified it by screenshotting the header across a wide sweep of
+   widths from 320px to 1920px, including the 390px viewport this crit is
+   marked at, to confirm no distortion at any of them
+   ([`3501239`](https://github.com/comp4020-agentic-coding-studio/comp4020-crit2-p-venkatram/commit/3501239)).
 
-Jobs 2 and 3 are the ones the repo can't tell a reader on its own, so they're
-where the marks are. The strongest moments are the ones where a correction
-landed in the **harness** rather than in another prompt --- a rule added to
-`CLAUDE.md`, a check wired up, an attempt thrown away: re-prompting until it
-passes is the routine case, and changing what the agent works against is the
-skilled one.
-
-Cite each moment as a link whose text is the commit hash or range and whose
-target is this repo's commit or compare URL, so a reader clicks straight to the
-evidence:
-
-- one commit: [`a1b2c3d`](https://github.com/YOUR-ORG/YOUR-REPO/commit/a1b2c3d)
-- a range:
-  [`a1b2c3d...e4f5a6b`](https://github.com/YOUR-ORG/YOUR-REPO/compare/a1b2c3d...e4f5a6b)
-
-To pair a prompt with the commit it produced, quote the prompt (curated, not a
-full transcript) next to the citation:
-
-> the prompt, verbatim
-
-Screenshots are welcome where one carries the verification better than a
-sentence does. Commit the file to this repo and link it with a **relative**
-path, which is what makes it render on GitHub: `![alt text](docs/before.png)`.
-Images don't count towards the word count and don't replace the citation.
-
-### A worked moment, for shape
-
-Delete this section along with the rest of the boilerplate --- it's here to show
-the four jobs in one paragraph, not to be imitated in content.
-
-> The date formatter kept coming back with `toLocaleDateString()` and no locale
-> argument, so the same build rendered differently on my machine and in CI. I'd
-> already re-prompted it twice, which fixed the line but not the habit, so the
-> third time I put the rule in `CLAUDE.md` instead
-> ([`3f9ac21`](https://github.com/YOUR-ORG/YOUR-REPO/commit/3f9ac21)) and added
-> a spec test that fails on a bare `toLocaleDateString`. That's what told me it
-> had actually taken: the test went red against the old code and green against
-> the new, and the next two features it wrote passed it without prompting
-> ([`3f9ac21...b7e0d14`](https://github.com/YOUR-ORG/YOUR-REPO/compare/3f9ac21...b7e0d14)).
+3. **Nav bar gradient went through three rounds of feedback, and each round I
+   re-checked the mobile dropdown, not just the desktop bar I was editing.**
+   The nav background moved from a flat tint, to a darker cohesive gradient, to
+   a lighter lavender-to-white left-to-right gradient, based on rounds of
+   visual feedback. The part that wasn't obvious: the desktop nav and the
+   mobile dropdown nav (triggered under the `(width <= 55rem)` breakpoint)
+   share the same link styles but sit on very different backgrounds, so a color
+   change tuned for the desktop gradient risked making the mobile dropdown's
+   text illegible. Each iteration I opened the mobile menu specifically (not
+   just resized the desktop view) and screenshotted it before treating the
+   change as done
+   ([`9705e86...01331c4`](https://github.com/comp4020-agentic-coding-studio/comp4020-crit2-p-venkatram/compare/9705e86...01331c4)).
 
 ## Before you ship
 
