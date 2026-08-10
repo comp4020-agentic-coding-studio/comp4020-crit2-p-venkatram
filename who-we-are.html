@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Who Are We – Harmony, The Music School</title>
+    <title>Who We Are &mdash; Harmony - The Music School</title>
     <meta
       name="description"
       content="Harmony's founding story, vision, affiliations and testimonials from students, choir directors and examiners."
@@ -15,13 +15,19 @@
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Tangerine:wght@400;700&family=Roboto:wght@400;500;700&display=swap"
     />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" type="image/png" href="./images/favicon.png" />
+    <link rel="apple-touch-icon" href="./images/apple-touch-icon.png" />
   </head>
   <body>
     <header class="site-header">
       <div class="header-inner">
-        <a class="brand" href="./"
-          >Harmony<span>The Music School</span></a
-        >
+        <a class="brand" href="./">
+          <img class="brand-logo" src="./images/logo.webp" alt="" width="300" height="300" />
+          <span class="brand-text">
+            <span class="brand-name">Harmony</span>
+            <span class="brand-tagline">the music school</span>
+          </span>
+        </a>
         <button
           class="nav-toggle"
           type="button"
@@ -34,19 +40,20 @@
         <nav class="primary-nav" id="primary-nav" aria-label="Primary" data-open="false">
           <ul>
             <li><a href="./">Home</a></li>
-            <li><a href="./who-we-are.html" aria-current="page">Who Are We</a></li>
+            <li><a href="./who-we-are.html" aria-current="page">Who We Are</a></li>
             <li><a href="./music-programmes.html">Music Programmes</a></li>
             <li><a href="./careers.html">Careers</a></li>
             <li><a href="./whats-on.html">Events</a></li>
+            <li><a href="#site-footer">Contact Us</a></li>
           </ul>
         </nav>
       </div>
     </header>
 
     <main>
-      <section class="hero">
+      <section class="hero" style="--hero-photo: url('./images/banners/who-we-are.webp')">
         <div class="hero-inner">
-          <p class="eyebrow">Who Are We</p>
+          <p class="eyebrow">Who We Are</p>
           <h1>Every great dream begins with a dreamer</h1>
           <p class="lede">
             Founded in August 2008 by Ms. Sandra Oberoi, Harmony began with a
@@ -125,7 +132,7 @@
               </p>
               <p>
                 <a href="https://www.harmony-themusicschool.com/team-1"
-                  >Read her full biography &rarr;</a
+                  >Meet the team &rarr;</a
                 >
               </p>
             </div>
@@ -173,6 +180,7 @@
             </blockquote>
           </div>
           <div class="card">
+            <div class="avatar avatar-placeholder" aria-hidden="true">KRS</div>
             <blockquote>
               <p>
                 Sandra Oberoi is “a bundle of creativity, talent, knowledge
@@ -203,7 +211,7 @@
       </section>
     </main>
 
-    <footer class="site-footer">
+    <footer class="site-footer" id="site-footer">
       <div class="footer-inner">
         <div>
           <h2>Harmony – The Music School</h2>
