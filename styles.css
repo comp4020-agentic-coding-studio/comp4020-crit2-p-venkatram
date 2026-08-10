@@ -92,7 +92,7 @@ img {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: linear-gradient(120deg, rgb(224 204 236 / 96%), rgb(206 180 224 / 92%));
+  background: linear-gradient(90deg, rgb(224 204 236 / 96%) 0%, rgb(255 255 255 / 97%) 100%);
   backdrop-filter: blur(0.5rem);
   border-bottom: 1px solid var(--line);
 }
