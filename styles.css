@@ -210,12 +210,39 @@ main {
   text-align: center;
   overflow: hidden;
   isolation: isolate;
-  background-image:
-    linear-gradient(165deg, rgb(88 56 112 / 88%), rgb(20 12 30 / 78%)),
-    var(--hero-photo);
   background-size: cover;
   background-position: center;
   color: var(--cream);
+}
+
+.hero-home {
+  background-image:
+    linear-gradient(165deg, rgb(88 56 112 / 88%), rgb(20 12 30 / 78%)),
+    url("./images/banners/home.webp");
+}
+
+.hero-who-we-are {
+  background-image:
+    linear-gradient(165deg, rgb(88 56 112 / 88%), rgb(20 12 30 / 78%)),
+    url("./images/banners/who-we-are.webp");
+}
+
+.hero-programmes {
+  background-image:
+    linear-gradient(165deg, rgb(88 56 112 / 88%), rgb(20 12 30 / 78%)),
+    url("./images/banners/programmes.webp");
+}
+
+.hero-careers {
+  background-image:
+    linear-gradient(165deg, rgb(88 56 112 / 88%), rgb(20 12 30 / 78%)),
+    url("./images/banners/careers.webp");
+}
+
+.hero-events {
+  background-image:
+    linear-gradient(165deg, rgb(88 56 112 / 88%), rgb(20 12 30 / 78%)),
+    url("./images/banners/events.webp");
 }
 
 .hero h1 {
